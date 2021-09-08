@@ -22,9 +22,9 @@ def run_game():
   # 开始游戏的主循环
   while True:
     # 监视键盘和鼠标事件
-    gf.check_events(ship)
+    gf.check_events(ai_settings, screen, ship, bullets)
     ship.update()
     bullets.update()
-    gf.update_screen(ai_settings, screen, ship)
+    gf.update_screen(ai_settings, screen, ship, bullets)
 
 run_game()
