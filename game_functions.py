@@ -32,6 +32,16 @@ def check_events(ai_settings, screen, ship, bullets):
     elif event.type == pygame.KEYUP:
       check_keyup_events(event, ship)
 
+def update_bullets(bullets):
+  """更新子弹的位置，并删除已消失的子弹"""
+  # 更新子弹的位置
+  bullets.update()
+
+  # 删除屏幕外的子弹
+  for bullet in bullets.copy():
+    if bullet.rect.bottom <= 0:
+      bullets.remove(bullet)
+
 def update_screen(ai_settings, screen, ship, bullets):
   """更新屏幕上的图像，并切换到新屏幕"""
   # 每次循环时都重绘屏幕
@@ -43,3 +53,4 @@ def update_screen(ai_settings, screen, ship, bullets):
 
   # 让最近绘制的屏幕可见
   pygame.display.flip()
+
