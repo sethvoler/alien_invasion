@@ -49,19 +49,21 @@ def check_events(ai_settings, screen, stats, play_button, ship, aliens,
         aliens, bullets, mouse_x, mouse_y)
 
 def start_game(ai_settings, screen, stats, ship, aliens, bullets):
+  # 重置游戏设置
+  ai_settings.initialize_dynamic_settings()
   # 隐藏光标
-    pygame.mouse.set_visible(False)
-    # 重置游戏统计信息
-    stats.reset_stats()
-    stats.game_active = True
+  pygame.mouse.set_visible(False)
+  # 重置游戏统计信息
+  stats.reset_stats()
+  stats.game_active = True
 
-    # 清空外星人列表和子弹列表
-    aliens.empty()
-    bullets.empty()
+  # 清空外星人列表和子弹列表
+  aliens.empty()
+  bullets.empty()
 
-    # 创建一群新的外星人，并让飞船居中
-    create_fleet(ai_settings, screen, ship, aliens)
-    ship.center_ship()
+  # 创建一群新的外星人，并让飞船居中
+  create_fleet(ai_settings, screen, ship, aliens)
+  ship.center_ship()
 
 def check_play_button(ai_settings, screen, stats, play_button, ship, aliens,
   bullets, mouse_x, mouse_y):
