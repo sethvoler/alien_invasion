@@ -38,7 +38,7 @@ def check_events(ai_settings, screen, ship, bullets):
     elif event.type == pygame.KEYUP:
       check_keyup_events(event, ship)
 
-def update_bullets(aliens, bullets):
+def update_bullets(ai_settings, screen, ship, aliens, bullets):
   """更新子弹的位置，并删除已消失的子弹"""
   # 更新子弹的位置
   bullets.update()
@@ -51,6 +51,10 @@ def update_bullets(aliens, bullets):
   # 检查是否有子弹击中了外星人
   # 如果是这样，就删除相应的外星人和子弹
   collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
+
+  if len(aliens) == 0:
+    bullets.empty()
+    create_fleet(ai_settings, screen, ship, aliens)
 
 def update_screen(ai_settings, screen, ship, aliens, bullets):
   """更新屏幕上的图像，并切换到新屏幕"""
